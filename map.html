@@ -6,15 +6,22 @@ title: Choir Map
 <p>Explore the choirs in your region.</p>
 
 <div id="map" style="height: 500px;"></div>
+
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
 <script>
-  var map = L.map('map').setView([45.5, -73.5], 10);  // Default center
+  // Initialize the map with a default view centered on the coordinates (45.5, -73.5) with zoom level 10
+  var map = L.map('map').setView([45.5, -73.5], 10);  
+
+  // Add the OpenStreetMap tile layer
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-  {% for choir in site.choirs %}
+  // Loop through the _choirs directory data
+  {% for choir in site.data.choirs %}
     {% if choir.coordinates %}
-      L.marker({{ choir.coordinates }}).addTo(map)
+      // Create a marker using the coordinates in front matter
+      L.marker([{{ choir.coordinates[0] }}, {{ choir.coordinates[1] }}]).addTo(map)
         .bindPopup("<b>{{ choir.name }}</b><br>{{ choir.location }}");
     {% endif %}
   {% endfor %}
