@@ -1,11 +1,11 @@
-<header>
-  <div class="site-header">
-    <div class="container">
+<header class="site-header">
+  <div class="container">
+    <div class="site-header-inner">
       <div class="site-title">
         <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
       </div>
       <nav>
-        <ul>
+        <ul class="nav-list">
           <li><a href="{{ '/' | relative_url }}">Welcome</a></li>
           <li><a href="{{ '/directory.html' | relative_url }}">Choir Directory</a></li>
         </ul>
@@ -15,6 +15,7 @@
 </header>
 
 <style>
+  /* General Header Styling */
   .site-header {
     background-color: #f8f9fa;
     padding: 20px 0;
@@ -28,27 +29,46 @@
     padding: 0 15px;
   }
 
+  .site-header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .site-title h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 30px;
+    font-weight: 700;
   }
 
-  nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: flex-start;
-    gap: 15px;
-  }
-
-  nav a {
+  .site-title a {
     text-decoration: none;
     color: #333;
-    font-weight: bold;
   }
 
-  nav a:hover {
+  .site-title a:hover {
+    color: #0056b3;
+  }
+
+  /* Navigation */
+  .nav-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-list li {
+    margin-right: 20px;
+  }
+
+  .nav-list a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .nav-list a:hover {
     color: #0056b3;
   }
 </style>
