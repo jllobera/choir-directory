@@ -23,21 +23,6 @@ title: Choir Directory
 <!-- Map link -->
 <p><a href="{{ '/map.html' | relative_url }}">View Choir Map</a></p>
 
-<div id="map" style="height: 500px;"></div>
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<script>
-  var map = L.map('map').setView([45.5, -73.5], 10);  // Default center
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-  {% for choir in site.choirs %}
-    {% if choir.coordinates %}
-      L.marker({{ choir.coordinates }}).addTo(map)
-        .bindPopup("<b>{{ choir.name }}</b><br>{{ choir.location }}");
-    {% endif %}
-  {% endfor %}
-</script>
-
 <script>
   document.getElementById('filter').addEventListener('change', function() {
     let value = this.value;
