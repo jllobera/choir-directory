@@ -39,3 +39,12 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   transform: translateY(-2px);
 }
+
+
+.choir-gallery img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px 0; /* Adjust margins for spacing */
+  border-radius: 8px; /* Optional: adds rounded corners */
+}
