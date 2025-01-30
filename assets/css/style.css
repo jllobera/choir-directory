@@ -2,18 +2,15 @@
 .browse-button {
   display: inline-block;
   width: var(--button-width, 33.33%);
-  background-image: var(--button-bg-image, none); /* Default to no background image */
-  background-size: cover;
-  background-position: center;
+  background-color: var(--button-bg-color, darkgrey); /* Default to dark grey */
   text-align: center;
   padding: 20px 0;
   font-size: 24px;
   font-weight: bold;
   text-transform: uppercase;
-  color: var(--button-text-color, white); /* Set text color to blue */
+  color: var(--button-text-color, white); /* Set text color to white */
   text-decoration: none;
   border: none;
-  /* Removed border-radius for square corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
