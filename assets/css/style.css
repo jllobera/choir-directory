@@ -48,3 +48,11 @@
   margin: 10px 0; /* Adjust margins for spacing */
   border-radius: 8px; /* Optional: adds rounded corners */
 }
+
+.choir-gallery img {
+  transition: transform 0.3s ease;
+}
+
+.choir-gallery img:hover {
+  transform: scale(1.05);
+}
