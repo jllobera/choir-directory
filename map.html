@@ -1,0 +1,30 @@
+---
+layout: default
+title: Choir Map
+---
+<h1>Choir Map</h1>
+<p>Explore the choirs in your region.</p>
+
+<!-- Map Container -->
+<div id="choir-map" style="height: 500px;"></div> <!-- Make sure to set the height of the map -->
+
+<!-- Add your map's script here -->
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+  // Initialize the map
+  var map = L.map('choir-map').setView([51.505, -0.09], 2); // Default map centered (change coordinates if needed)
+
+  // Tile Layer for the map
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  // Add pins for each choir (using coordinates array directly)
+  {% for choir in site.pages %}
+    {% if choir.coordinates %}
+      var latLon = [{{ choir.coordinates[0] }}, {{ choir.coordinates[1] }}];  // Latitude, Longitude
+      L.marker(latLon).addTo(map)
+        .bindPopup("<b>{{ choir.name }}</b><br>{{ choir.location }}");
+    {% endif %}
+  {% endfor %}
+</script>
