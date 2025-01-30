@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<div class="choir-profile">
+    <h1>{{ page.name }}</h1>
+    <p><strong>Founded:</strong> {{ page.year }}</p>
+    <p><strong>Location:</strong> {{ page.location }}</p>
+
+    {% if page.conductors %}
+      <p><strong>Conductors:</strong> {{ page.conductors | join: ", " }}</p>
+    {% endif %}
+
+    <p>{{ page.description }}</p>
+
+    {% if page.website %}
+      <p><a href="{{ page.website }}" target="_blank">Visit Website</a></p>
+    {% endif %}
+
+    {% if page.photos %}
+      <h2>Gallery</h2>
+      <div class="choir-gallery">
+        {% for photo in page.photos %}
+          <img src="{{ photo }}" alt="{{ page.name }} photo">
+        {% endfor %}
+      </div>
+    {% endif %}
+</div>
+
+<style>
+  .choir-profile {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+  }
+  .choir-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+  }
+  .choir-gallery img {
+      max-width: 200px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+</style>
