@@ -1,0 +1,54 @@
+<header>
+  <div class="site-header">
+    <div class="container">
+      <div class="site-title">
+        <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="{{ '/' | relative_url }}">Welcome</a></li>
+          <li><a href="{{ '/directory.html' | relative_url }}">Choir Directory</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    border-bottom: 1px solid #e1e1e1;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  .site-title h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+
+  nav a:hover {
+    color: #0056b3;
+  }
+</style>
