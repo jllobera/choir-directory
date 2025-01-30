@@ -1,0 +1,40 @@
+/* assets/css/button.css */
+.browse-button {
+  display: inline-block;
+  width: var(--button-width, 33.33%);
+  background-image: var(--button-bg-image, url('/img/default-image.jpg'));
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--button-text-color, white);
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.browse-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.browse-button span {
+  position: relative;
+  z-index: 2;
+}
+
+.browse-button:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform:
