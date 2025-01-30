@@ -1,0 +1,30 @@
+---
+layout: default
+title: Choir Directory
+---
+<h1>Choir Directory</h1>
+<label for="filter">Filter by type:</label>
+<select id="filter">
+  <option value="all">All</option>
+  <option value="Chamber Choir">Chamber Choir</option>
+  <option value="Community Choir">Community Choir</option>
+</select>
+
+<ul id="choir-list">
+  {% for choir in site.choirs %}
+    <li class="choir-item" data-type="{{ choir.type }}">
+      <h2><a href="{{ choir.url }}">{{ choir.name }}</a></h2>
+      <p>Type: {{ choir.type }}</p>
+      <p>Location: {{ choir.location }}</p>
+    </li>
+  {% endfor %}
+</ul>
+
+<script>
+  document.getElementById('filter').addEventListener('change', function() {
+    let value = this.value;
+    document.querySelectorAll('.choir-item').forEach(item => {
+      item.style.display = (value === "all" || item.dataset.type === value) ? "block" : "none";
+    });
+  });
+</script>
