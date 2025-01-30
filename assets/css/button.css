@@ -2,7 +2,7 @@
 .browse-button {
   display: inline-block;
   width: var(--button-width, 33.33%);
-  background-image: var(--button-bg-image, url('/img/default-image.jpg'));
+  background-image: var(--button-bg-image, none); /* Default to no background image */
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -10,10 +10,10 @@
   font-size: 24px;
   font-weight: bold;
   text-transform: uppercase;
-  color: var(--button-text-color, white);
+  color: var(--button-text-color, white); /* Set text color to blue */
   text-decoration: none;
   border: none;
-  border-radius: 8px;
+  /* Removed border-radius for square corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
@@ -37,4 +37,5 @@
 
 .browse-button:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  transform:
+  transform: translateY(-2px);
+}
