@@ -18,7 +18,7 @@ title: Choir Map
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
   // Loop through the _choirs directory data
-  {% for choir in site.data.choirs %}
+  {% for choir in site.choirs %}
     {% if choir.coordinates %}
       // Create a marker using the coordinates in front matter
       L.marker([{{ choir.coordinates[0] }}, {{ choir.coordinates[1] }}]).addTo(map)
