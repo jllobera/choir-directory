@@ -2,6 +2,17 @@
 layout: default
 title: Welcome to the Choir Directory
 ---
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+  
+  <!-- Link to external stylesheet for button -->
+  <link rel="stylesheet" href="{{ '/assets/css/button.css' | relative_url }}">
+</head>
+
+
 <h1>Welcome to the Choir Directory</h1>
 <p>Find choirs in your region and discover their music.</p>
 <a href="{{ '/directory.html' | relative_url }}" 
