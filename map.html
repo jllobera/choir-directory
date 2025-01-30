@@ -5,6 +5,24 @@ title: Choir Map
 <h1>Choir Map</h1>
 <p>Explore the choirs in your region.</p>
 
+<div id="map" style="height: 500px;"></div>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script>
+  var map = L.map('map').setView([45.5, -73.5], 10);  // Default center
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+  {% for choir in site.choirs %}
+    {% if choir.coordinates %}
+      L.marker({{ choir.coordinates }}).addTo(map)
+        .bindPopup("<b>{{ choir.name }}</b><br>{{ choir.location }}");
+    {% endif %}
+  {% endfor %}
+</script>
+
+
+
+
 <!-- Map Container -->
 <div id="choir-map" style="height: 500px;"></div> <!-- Make sure to set the height of the map -->
 
