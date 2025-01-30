@@ -1,0 +1,9 @@
+title: Choir Directory
+description: A directory of choirs in my region
+theme: minima  # You can change this later
+plugins:
+  - jekyll-collections
+  - jekyll-seo-tag
+collections:
+  choirs:
+    output: true
