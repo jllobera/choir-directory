@@ -13,7 +13,7 @@ title: Choir Directory
 <ul id="choir-list">
   {% for choir in site.choirs %}
     <li class="choir-item" data-type="{{ choir.type }}">
-      <h2><a href="{{ choir.url }}">{{ choir.name }}</a></h2>
+      <h2><a href="{{ choir.url | relative_url }}">{{ choir.name }}</a></h2>
       <p>Type: {{ choir.type }}</p>
       <p>Location: {{ choir.location }}</p>
     </li>
