@@ -14,7 +14,7 @@ title: Choir Directory
   {% endfor %}
 </select>
 
-<label for="filter-location">Filter by location:</label>
+<label for="filter">Filter by location:</label>
 <select id="filter-location">
   <option value="all">All</option>
   {% assign locations = site.choirs | map: "location" | uniq %}
