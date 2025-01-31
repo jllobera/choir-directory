@@ -21,7 +21,8 @@ title: Choir Directory
 </ul>
 
 <!-- Map link -->
-<p><a href="{{ '/map.html' | relative_url }}">View Choir Map</a></p>
+{% include choir-map-button.html button-width-desktop="48%" %}
+{% include concert-agenda-button.html button-width-desktop="48%" %}
 
 <script>
   document.getElementById('filter').addEventListener('change', function() {
