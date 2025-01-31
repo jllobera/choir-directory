@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+
+  <!-- Jekyll metadata -->
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta name="author" content="{{ site.author }}">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+  <!-- Leaflet (only used if the page needs a map) -->
+  {% if page.map %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  {% endif %}
+</head>
+
+<body>
+
+  {% include header.html %}
+
+  <main class="container">
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+
+  <!-- Scripts -->
+  <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
+
+  <!-- Leaflet (only used if the page needs a map) -->
+  {% if page.map %}
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  {% endif %}
+
+</body>
+</html>
