@@ -1,7 +1,7 @@
 /* assets/css/button.css */
 .browse-button {
   display: inline-block;
-  width: var(--button-width, 33.33%);
+  width: var(--button-width-desktop, 33.33%);
   background-color: var(--button-bg-color, darkgrey); /* Default to dark grey */
   text-align: center;
   padding: 20px 0;
@@ -35,6 +35,13 @@
 .browse-button:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   transform: translateY(-2px);
+}
+
+/* Responsive width for mobile */
+@media (max-width: 768px) {
+  .browse-button {
+    width: var(--button-width-mobile, 100%);
+  }
 }
 
 
