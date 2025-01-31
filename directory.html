@@ -5,7 +5,7 @@ title: Choir Directory
 
 <h1>Choir Directory</h1>
 
-<label for="filter-type">Filter by type:</label>
+<label for="filter-type">Filter by type: </label>
 <select id="filter">
   <option value="all">All</option>
   {% assign types = site.choirs | map: "type" | uniq %}
@@ -14,7 +14,7 @@ title: Choir Directory
   {% endfor %}
 </select>
 
-<label for="filter-location">Filter by location:</label>
+<label for="filter-location">Filter by location: </label>
 <select id="filter">
   <option value="all">All</option>
   {% assign locations = site.choirs | map: "location" | uniq %}
@@ -59,7 +59,7 @@ title: Choir Directory
     padding: 8px;
     font-size: 16px;
     display: block;  /* Ensure each filter takes up a full line */
-    width: 100%;  /* Full width for each filter */
+    /* width: 100%;  */ /* Full width for each filter */
   }
 
   #choir-list {
