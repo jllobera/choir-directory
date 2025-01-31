@@ -8,8 +8,19 @@ title: Choir Directory
 <label for="filter">Filter by type:</label>
 <select id="filter">
   <option value="all">All</option>
-  <option value="Chamber Choir">Chamber Choir</option>
-  <option value="Community Choir">Community Choir</option>
+  {% assign types = site.choirs | map: "type" | uniq %}
+  {% for type in types %}
+    <option value="{{ type }}">{{ type }}</option>
+  {% endfor %}
+</select>
+
+<label for="filter-location">Filter by location:</label>
+<select id="filter-location">
+  <option value="all">All</option>
+  {% assign locations = site.choirs | map: "location" | uniq %}
+  {% for location in locations %}
+    <option value="{{ location }}">{{ location }}</option>
+  {% endfor %}
 </select>
 
 <!-- List of choirs -->
