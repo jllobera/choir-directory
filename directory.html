@@ -54,10 +54,12 @@ title: Choir Directory
     font-weight: bold;
   }
 
-  #filter {
+  #filter-type, #filter-location {
     margin-bottom: 20px;
     padding: 8px;
     font-size: 16px;
+    display: block;  /* Ensure each filter takes up a full line */
+    width: 100%;  /* Full width for each filter */
   }
 
   #choir-list {
@@ -83,8 +85,9 @@ title: Choir Directory
 
   /* Responsive Design for Mobile */
   @media (max-width: 768px) {
-    #filter {
+    #filter-type, #filter-location {
       width: 100%;
+      margin-right: 0;
     }
 
     #choir-list {
