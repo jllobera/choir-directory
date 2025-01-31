@@ -27,9 +27,16 @@ title: Choir Directory
 <ul id="choir-list">
   {% for choir in site.choirs %}
     <li class="choir-item" data-type="{{ choir.type }}">
-      <h2><a href="{{ choir.url | relative_url }}">{{ choir.name }}</a></h2>
-      <p>Type: {{ choir.type }}</p>
-      <p>Location: {{ choir.location }}</p>
+      <div class="choir-info">
+        <h2><a href="{{ choir.url | relative_url }}">{{ choir.name }}</a></h2>
+        <p>Type: {{ choir.type }}</p>
+        <p>Location: {{ choir.location }}</p>
+      </div>
+      {% if choir.coverimage %}
+        <div class="choir-image">
+          <img src="{{ choir.coverimage | relative_url }}" alt="Cover image for {{ choir.name }}">
+        </div>
+      {% endif %}
     </li>
   {% endfor %}
 </ul>
@@ -80,6 +87,9 @@ title: Choir Directory
   }
 
   .choir-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: #f8f9fa;
     border: 1px solid #e1e1e1;
     padding: 15px;
@@ -87,12 +97,15 @@ title: Choir Directory
     border-radius: 8px;
   }
 
-  .choir-item h2 {
-    margin-top: 0;
+  .choir-info {
+    flex: 1; /* Takes up available space */
   }
 
-  .choir-item p {
-    margin: 5px 0;
+  .choir-image img {
+    width: 120px;  /* Adjust width as needed */
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
   }
 
   /* Responsive Design for Mobile */
@@ -111,8 +124,14 @@ title: Choir Directory
     }
 
     .choir-item {
-      padding: 10px;
-      margin: 5px 0;
+      flex-direction: column; /* Stack content vertically */
+      align-items: flex-start;
+    }
+
+    .choir-image img {
+      width: 100%; /* Make the image responsive */
+      max-width: 200px; /* Limit size */
+      margin-top: 10px;
     }
   }
 </style>
