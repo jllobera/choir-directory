@@ -56,18 +56,15 @@ title: Choir Directory
         let matchesLocation = locationValue === "all" || item.dataset.location === locationValue;
 
         if (matchesType && matchesLocation) {
-          item.style.visibility = "visible";
-          item.style.position = "relative"; // Ensure normal positioning
-          item.style.height = "auto"; // Allow resizing properly
+          item.style.display = "flex";  // Ensure it remains in place
         } else {
-          item.style.visibility = "hidden";
-          item.style.position = "absolute"; // Keeps spacing correct
-          item.style.height = "0"; // Collapse the element properly
+          item.style.display = "none";  // Properly hides non-matching entries
         }
       });
     });
   });
 </script>
+
 
 
 <style>
