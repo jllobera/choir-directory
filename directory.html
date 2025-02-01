@@ -33,7 +33,9 @@ title: Choir Directory
         <p>{{ choir.location }}</p>
       </div>
       {% if choir.coverimage %}
-        <img class="choir-image" src="{{ choir.coverimage | relative_url }}" alt="{{ choir.name }} cover image">
+        <div class="choir-image">
+          <img src="{{ choir.coverimage | relative_url }}" alt="Cover image for {{ choir.name }}">
+        </div>
       {% endif %}
     </li>
   {% endfor %}
