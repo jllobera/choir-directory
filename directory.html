@@ -33,9 +33,7 @@ title: Choir Directory
         <p>{{ choir.location }}</p>
       </div>
       {% if choir.coverimage %}
-        <div class="choir-image">
-          <img src="{{ choir.coverimage | relative_url }}" alt="Cover image for {{ choir.name }}">
-        </div>
+        <img class="choir-image" src="{{ choir.coverimage | relative_url }}" alt="{{ choir.name }} cover image">
       {% endif %}
     </li>
   {% endfor %}
@@ -133,7 +131,7 @@ title: Choir Directory
     }
 
     .choir-item {
-      flex-direction: column; /* Stack content vertically */
+      flex-direction: row; /* Stack content vertically */
       align-items: flex-start;
       padding: 8px;
     }
