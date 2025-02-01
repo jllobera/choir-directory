@@ -46,13 +46,29 @@ title: Choir Directory
 {% include concert-agenda-button.html button-width-desktop="48%" %}
 
 <script>
-  document.getElementById('filter').addEventListener('change', function() {
-    let value = this.value;
-    document.querySelectorAll('.choir-item').forEach(item => {
-      item.style.display = (value === "all" || item.dataset.type === value) ? "block" : "none";
+  document.querySelectorAll("#filter, #filter-location").forEach(filter => {
+    filter.addEventListener("change", function() {
+      let typeValue = document.getElementById("filter").value;
+      let locationValue = document.getElementById("filter-location").value;
+
+      document.querySelectorAll(".choir-item").forEach(item => {
+        let matchesType = typeValue === "all" || item.dataset.type === typeValue;
+        let matchesLocation = locationValue === "all" || item.dataset.location === locationValue;
+
+        if (matchesType && matchesLocation) {
+          item.style.visibility = "visible";
+          item.style.position = "relative"; // Ensure normal positioning
+          item.style.height = "auto"; // Allow resizing properly
+        } else {
+          item.style.visibility = "hidden";
+          item.style.position = "absolute"; // Keeps spacing correct
+          item.style.height = "0"; // Collapse the element properly
+        }
+      });
     });
   });
 </script>
+
 
 <style>
   /* Styling for the Directory Page */
@@ -90,6 +106,7 @@ title: Choir Directory
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: all 0.3s ease-in-out;
     background-color: #f8f9fa;
     border: 1px solid #e1e1e1;
     padding: 15px;
