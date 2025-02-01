@@ -46,9 +46,9 @@ title: Choir Directory
 {% include concert-agenda-button.html button-width-desktop="48%" %}
 
 <script>
-  document.querySelectorAll("#filter, #filter-location").forEach(filter => {
+  document.querySelectorAll("#filter-type, #filter-location").forEach(filter => {
     filter.addEventListener("change", function() {
-      let typeValue = document.getElementById("filter").value;
+      let typeValue = document.getElementById("filter-type").value;
       let locationValue = document.getElementById("filter-location").value;
 
       document.querySelectorAll(".choir-item").forEach(item => {
