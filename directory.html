@@ -29,8 +29,8 @@ title: Choir Directory
     <li class="choir-item" data-type="{{ choir.type }}">
       <div class="choir-info">
         <h2><a href="{{ choir.url | relative_url }}">{{ choir.name }}</a></h2>
-        <p>Type: {{ choir.type }}</p>
-        <p>Location: {{ choir.location }}</p>
+        <p>{{ choir.type }}</p>
+        <p>{{ choir.location }}</p>
       </div>
       {% if choir.coverimage %}
         <div class="choir-image">
