@@ -26,7 +26,7 @@ title: Choir Directory
 <!-- List of choirs -->
 <ul id="choir-list">
   {% for choir in site.choirs %}
-    <li class="choir-item" data-type="{{ choir.type }}">
+    <li class="choir-item" data-type="{{ choir.type }}" data-location="{{ choir.location }}">
       <div class="choir-info">
         <h2><a href="{{ choir.url | relative_url }}">{{ choir.name }}</a></h2>
         <p>{{ choir.type }}</p>
@@ -55,11 +55,7 @@ title: Choir Directory
         let matchesType = typeValue === "all" || item.dataset.type === typeValue;
         let matchesLocation = locationValue === "all" || item.dataset.location === locationValue;
 
-        if (matchesType && matchesLocation) {
-          item.style.display = "flex";  // Ensure it remains in place
-        } else {
-          item.style.display = "none";  // Properly hides non-matching entries
-        }
+        item.style.display = (matchesType && matchesLocation) ? "flex" : "none";  
       });
     });
   });
