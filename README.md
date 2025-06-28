@@ -1,2 +1,2 @@
-# coralsdelleida
-Plataforma que dona visibilitat i presenta les corals de les terres de Lleida
+# Choir directory
+A flexible framework for creating a website that highlights choirs in a particular area, promotes their events, and shares upcoming concert announcements.
