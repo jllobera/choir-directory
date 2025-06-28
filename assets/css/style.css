@@ -44,6 +44,10 @@
   }
 }
 
+.button-container {
+  margin: 20px 0; /* 20px space above and below */
+}
+
 
 .choir-gallery img {
   max-width: 100%;
