@@ -52,8 +52,11 @@ title: Choir Directory
 
 
 <!-- Include the buttons -->
-{% include choir-map-button.html button-width-desktop="49.5%" %}
-{% include concert-agenda-button.html button-width-desktop="49.5%" %}
+<div class="button-container">
+  {% include choir-map-button.html button-width-desktop="49.5%" %}
+  {% include concert-agenda-button.html button-width-desktop="49.5%" %}
+</div>
+
 
 <script>
   document.querySelectorAll("#filter-type, #filter-location").forEach(filter => {
@@ -260,5 +263,10 @@ title: Choir Directory
   text-decoration: none;
   display: block; /* so the whole block is clickable */
 }   
-    
+
+.button-container {
+  margin: 20px 0; /* 20px space above and below */
+}
+
+  
 </style>
