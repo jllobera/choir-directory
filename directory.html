@@ -26,9 +26,9 @@ title: Choir Directory
 </div>
 
 <!-- List of choirs -->
-<ul id="choir-list">
+<div id="choir-list" class="choir-grid">
   {% for choir in site.choirs %}
-    <li class="choir-item" data-type="{{ choir.type }}" data-location="{{ choir.location }}">
+    <div class="choir-item" data-type="{{ choir.type }}" data-location="{{ choir.location }}" style="background-color: {{ choir.color | default: '#f8f9fa' }};">
       <div class="choir-info">
         <h2><a href="{{ choir.url | relative_url }}">{{ choir.name }}</a></h2>
         <p>{{ choir.type }}</p>
@@ -39,9 +39,10 @@ title: Choir Directory
           <img src="{{ choir.coverimage | relative_url }}" alt="Cover image for {{ choir.name }}">
         </div>
       {% endif %}
-    </li>
+    </div>
   {% endfor %}
-</ul>
+</div>
+
 
 <!-- Include the buttons -->
 {% include choir-map-button.html button-width-desktop="48%" %}
@@ -156,4 +157,50 @@ title: Choir Directory
       margin-top: 5px;
     }
   }
+
+    /* Responsive grid layout for choir items */
+  .choir-grid {
+    display: grid;
+    gap: 20px;
+  }
+  
+  /* 3 columns for large screens */
+  @media (min-width: 992px) {
+    .choir-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* 2 columns for medium screens */
+  @media (min-width: 600px) and (max-width: 991px) {
+    .choir-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* 1 column for small screens */
+  @media (max-width: 599px) {
+    .choir-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Add a transparent overlay background image to each choir-item */
+  .choir-item {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .choir-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/path/to/your/transparent-overlay.png'); /* replace with your transparent PNG */
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.2; /* adjust transparency */
+    pointer-events: none; /* allow clicks to pass through */
+  }
+
+  
 </style>
