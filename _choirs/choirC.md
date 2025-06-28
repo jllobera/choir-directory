@@ -7,6 +7,7 @@ year: 2023
 conductors:
   - "John Doe"
 website: "http://www.choirc.com"
+color: '#ff0000'
 coordinates: [40.0000, -0.5000]  # Latitude, Longitude (optional)
 coverimage: "/img/choirs/choira3.jpg"
 photos:
