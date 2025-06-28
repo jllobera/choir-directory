@@ -7,7 +7,7 @@ title: Choir Directory
 
 <div id="filter-container">
   <label for="filter-type">Filter by type: </label>
-  <select id="filter-type">
+  <select id="filter-type" autocomplete="off">
     <option value="all">All</option>
     {% assign types = site.choirs | map: "type" | uniq %}
     {% for type in types %}
@@ -16,7 +16,7 @@ title: Choir Directory
   </select>
   
   <label for="filter-location">Filter by location: </label>
-  <select id="filter-location">
+  <select id="filter-location" autocomplete="off">
     <option value="all">All</option>
     {% assign locations = site.choirs | map: "location" | uniq %}
     {% for location in locations %}
