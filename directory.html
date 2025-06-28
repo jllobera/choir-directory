@@ -5,7 +5,9 @@ title: Choir Directory
 
 <h1>Choir Directory</h1>
 
+<!-- Filters -->
 <div id="filter-container">
+  <!-- Type filter -->
   <label for="filter-type">Filter by type: </label>
   <select id="filter-type" autocomplete="off">
     <option value="all">All</option>
@@ -14,7 +16,7 @@ title: Choir Directory
       <option value="{{ type }}">{{ type }}</option>
     {% endfor %}
   </select>
-  
+  <!-- Location filter -->
   <label for="filter-location">Filter by location: </label>
   <select id="filter-location" autocomplete="off">
     <option value="all">All</option>
@@ -25,20 +27,24 @@ title: Choir Directory
   </select>
 </div>
 
+
 <!-- List of choirs -->
 <div id="choir-list" class="choir-grid">
   {% for choir in site.choirs %}
-    <div class="choir-item" data-type="{{ choir.type }}" data-location="{{ choir.location }}" style="background-color: {{ choir.color | default: '#f8f9fa' }};">
-      <div class="choir-info">
-        <h2><a href="{{ choir.url | relative_url }}">{{ choir.name }}</a></h2>
-        <p>{{ choir.type }}</p>
-        <p>{{ choir.location }}</p>
+    <div class="choir-item"
+        data-type="{{ choir.type }}"
+        data-location="{{ choir.location }}"
+        style="--choir-color: {{ choir.color | default: '#f8f9fa' }};
+          {% if choir.coverimage %}
+            --choir-image: url('{{ choir.coverimage | relative_url }}');
+          {% else %}
+            --choir-image: none;
+          {% endif %}
+        onclick="window.location.href='{{ choir.url | relative_url}}'">
+      <div class="choir-content">
+        <h3 class="choir-name">{{ choir.name }}</h3>
+        <p class="choir-details">{{ choir.type }} · {{ choir.location }}</p>
       </div>
-      {% if choir.coverimage %}
-        <div class="choir-image">
-          <img src="{{ choir.coverimage | relative_url }}" alt="Cover image for {{ choir.name }}">
-        </div>
-      {% endif %}
     </div>
   {% endfor %}
 </div>
@@ -188,19 +194,68 @@ title: Choir Directory
   /* Add a transparent overlay background image to each choir-item */
   .choir-item {
     position: relative;
+    cursor: pointer;
+    border-radius: 8px;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
+
+    
+  /* Solid color background with 40% opacity */
   .choir-item::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url('/path/to/your/transparent-overlay.png'); /* replace with your transparent PNG */
-    background-size: cover;
-    background-repeat: no-repeat;
-    opacity: 0.2; /* adjust transparency */
-    pointer-events: none; /* allow clicks to pass through */
+    background-color: var(--choir-color, #f8f9fa);
+    opacity: 0.4; /* 40% opacity */
+    pointer-events: none;
   }
-
   
+  /* Cover image background with 25% opacity */
+  .choir-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--choir-image);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.25; /* 25% opacity */
+    pointer-events: none;
+  }
+  
+  /* Choir text content positioning */
+  .choir-content {
+    position: relative;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    z-index: 1; /* above the overlays */
+  }
+  
+  /* Choir name styling */
+  .choir-name {
+    margin: 0 0 5px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Choir details styling */
+  .choir-details {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  /* Hover glow effect */
+  .choir-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  }
+  
+  
+    
+    
 </style>
