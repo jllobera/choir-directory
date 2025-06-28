@@ -117,3 +117,83 @@
   }
 }
 
+
+
+.choir-item {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.choir-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 1rem;
+  background: #f9f9f9; /* Light card background */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.choir-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.choir-image img {
+  display: block;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 0; /* Removed redundant border radius inside card */
+}
+
+.choir-content {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.choir-name {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.choir-name a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.choir-name a:hover {
+  text-decoration: underline;
+}
+
+.choir-type,
+.choir-location {
+  margin: 0.2rem 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Responsive choir card layout: stack on narrow screens */
+@media (max-width: 768px) {
+  .choir-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .choir-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .choir-content {
+    padding: 0.75rem;
+  }
+}
+
+
