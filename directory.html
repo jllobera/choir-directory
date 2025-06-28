@@ -24,7 +24,7 @@ title: Choir Directory
 </select>
 
 <!-- List of choirs -->
-<ul class="choir-list">
+<ul id="choir-list">
   {% for choir in site.choirs %}
     <li class="choir-item" data-type="{{ choir.type }}" data-location="{{ choir.location }}">
       <div class="choir-info">
