@@ -38,5 +38,8 @@ title: Choir Map
   {% endfor %}
 </script>
 
-{% include browse-choirs-button.html button-width-desktop="48%" %}
-{% include concert-agenda-button.html button-width-desktop="48%" %}
+<!-- Include the buttons -->
+<div class="button-container">
+  {% include browse-choirs-button.html %}
+  {% include concert-agenda-button.html %}
+</div>
