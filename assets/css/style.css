@@ -197,3 +197,27 @@
 }
 
 
+/* CHOIR LIST */
+.choir-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Default: 1 column */
+  gap: 1.5rem; /* Space between items */
+  padding: 0;
+  margin: 0;
+}
+
+/* Medium screens: 2 columns */
+@media (min-width: 600px) {
+  .choir-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large screens: 3 columns */
+@media (min-width: 1024px) {
+  .choir-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
