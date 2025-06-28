@@ -31,6 +31,7 @@ title: Choir Directory
 <!-- List of choirs -->
 <div id="choir-list" class="choir-grid">
   {% for choir in site.choirs %}
+    <a href="{{ choir.url | relative_url }}" class="choir-link">
     <div class="choir-item"
         data-type="{{ choir.type }}"
         data-location="{{ choir.location }}"
@@ -39,13 +40,13 @@ title: Choir Directory
             --choir-image: url('{{ choir.coverimage | relative_url }}');
           {% else %}
             --choir-image: none;
-          {% endif %}
-        onclick="window.location.href='{{ choir.url | relative_url}}'">
+          {% endif %}">
       <div class="choir-content">
         <h3 class="choir-name">{{ choir.name }}</h3>
         <p class="choir-details">{{ choir.type }} · {{ choir.location }}</p>
       </div>
     </div>
+    </a>
   {% endfor %}
 </div>
 
@@ -231,8 +232,8 @@ title: Choir Directory
   /* Choir text content positioning */
   .choir-content {
     position: relative;
-    color: #fff;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    color: #000; /* black */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* none? */
     z-index: 1; /* above the overlays */
   }
   
@@ -254,8 +255,10 @@ title: Choir Directory
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(0,0,0,0.4);
   }
-  
-  
-    
+
+  .choir-link {
+  text-decoration: none;
+  display: block; /* so the whole block is clickable */
+}   
     
 </style>
