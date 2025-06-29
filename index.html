@@ -16,6 +16,13 @@ title: Welcome to the Choir Directory
 <h1>Welcome to the Choir Directory</h1>
 <p>Find choirs in your region and discover their music.</p>
 
-{% include browse-choirs-button.html button-width-desktop="32%" %}
-{% include choir-map-button.html button-width-desktop="32%" %}
-{% include concert-agenda-button.html button-width-desktop="32%" %}
+<div class="button-container">
+  {% include browse-choirs-button.html %}
+  {% include choir-map-button.html %}
+</div>
+
+<div class="button-container">
+  {% include browse-choirs-button.html button-width-desktop="32%" %}
+  {% include choir-map-button.html button-width-desktop="32%" %}
+  {% include concert-agenda-button.html button-width-desktop="32%" %}
+</div>
