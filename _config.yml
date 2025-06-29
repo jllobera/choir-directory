@@ -7,3 +7,5 @@ plugins:
 collections:
   choirs:
     output: true
+  concerts:
+    output: true
