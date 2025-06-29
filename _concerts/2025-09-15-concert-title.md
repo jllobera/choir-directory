@@ -1,7 +1,7 @@
 ---
 layout: concert
 date: 2025-09-15
-hour: 19:30
+hour: "19:30"
 place: "Concert Hall A, City A"
 title: "Autumn Gala Concert"
 price: "Free admission"
