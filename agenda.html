@@ -71,32 +71,45 @@ title: Concert Agenda
 </div>
 
 <script>
-document.querySelectorAll(".concert-row").forEach(row => {
-  row.addEventListener("click", function() {
-    const url = this.dataset.concert;
-    fetch(url)
-      .then(response => response.text())
-      .then(data => {
-        const parser = new DOMParser();
-        const htmlDoc = parser.parseFromString(data, "text/html");
-        const concertContent = htmlDoc.querySelector(".concert-content");
-        document.getElementById("modal-body").innerHTML = concertContent.innerHTML;
-        document.getElementById("concert-modal").style.display = "block";
-      });
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll(".concert-row").forEach(row => {
+    row.addEventListener("click", function() {
+      const url = this.dataset.concert;
+      fetch(url)
+        .then(response => response.text())
+        .then(data => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(data, "text/html");
+          const concertContent = htmlDoc.querySelector(".concert-content");
+          if (concertContent) {
+            document.getElementById("modal-body").innerHTML = concertContent.innerHTML;
+            document.getElementById("concert-modal").style.display = "block";
+          } else {
+            document.getElementById("modal-body").innerHTML = "<p>Error: could not load concert details.</p>";
+            document.getElementById("concert-modal").style.display = "block";
+          }
+        })
+        .catch(error => {
+          console.error("Error fetching concert page:", error);
+          document.getElementById("modal-body").innerHTML = "<p>Error loading concert details.</p>";
+          document.getElementById("concert-modal").style.display = "block";
+        });
+    });
+  });
+
+  document.querySelector(".close-modal").addEventListener("click", function() {
+    document.getElementById("concert-modal").style.display = "none";
+  });
+
+  window.addEventListener("click", function(event) {
+    const modal = document.getElementById("concert-modal");
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
   });
 });
-
-document.querySelector(".close-modal").addEventListener("click", function() {
-  document.getElementById("concert-modal").style.display = "none";
-});
-
-window.addEventListener("click", function(event) {
-  const modal = document.getElementById("concert-modal");
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-});
 </script>
+
 
 
 <style>
