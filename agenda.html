@@ -16,9 +16,141 @@ title: Concert Agenda
 <h1>Concert Agenda</h1>
 <p>Details of upcoming concerts will be added here.</p>
 
+---
+layout: default
+title: Concert Agenda
+---
+
+<h1>Concert Agenda</h1>
+
+<table id="concert-table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Title</th>
+      <th>Place</th>
+      <th>Price</th>
+      <th>Performers</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% assign sorted_concerts = site.concerts | sort: 'date' %}
+    {% for concert in sorted_concerts %}
+      <tr class="concert-row" data-concert="{{ concert.url | relative_url }}">
+        <td>{{ concert.date | date: "%Y-%m-%d" }}</td>
+        <td>{{ concert.hour }}</td>
+        <td>{{ concert.title }}</td>
+        <td>{{ concert.place }}</td>
+        <td>{{ concert.price }}</td>
+        <td>
+          {% for performer in concert.performers %}
+            {{ performer }}{% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- Modal for concert details -->
+<div id="concert-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div id="modal-body">
+      <!-- Concert details will be loaded here -->
+    </div>
+  </div>
+</div>
+
 
 <!-- Include the buttons -->
 <div class="button-container">
   {% include browse-choirs-button.html %}
   {% include choir-map-button.html %}
 </div>
+
+<script>
+document.querySelectorAll(".concert-row").forEach(row => {
+  row.addEventListener("click", function() {
+    const url = this.dataset.concert;
+    fetch(url)
+      .then(response => response.text())
+      .then(data => {
+        const parser = new DOMParser();
+        const htmlDoc = parser.parseFromString(data, "text/html");
+        const concertContent = htmlDoc.querySelector(".concert-content");
+        document.getElementById("modal-body").innerHTML = concertContent.innerHTML;
+        document.getElementById("concert-modal").style.display = "block";
+      });
+  });
+});
+
+document.querySelector(".close-modal").addEventListener("click", function() {
+  document.getElementById("concert-modal").style.display = "none";
+});
+
+window.addEventListener("click", function(event) {
+  const modal = document.getElementById("concert-modal");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+});
+</script>
+
+
+<style>
+#concert-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+#concert-table th, #concert-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+#concert-table th {
+  background-color: #f2f2f2;
+}
+
+.concert-row:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Modal styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+}
+
+.close-modal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-modal:hover, .close-modal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
