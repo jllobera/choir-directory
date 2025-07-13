@@ -1,11 +1,14 @@
 title: Choir Directory
 description: A directory of choirs in my region
-theme: minima  # You can change this later
+theme: minima
+
+# GitHub Pages supports a limited set of plugins
 plugins:
-  # - jekyll-collections
-  - jekyll-seo-tag
+  - jekyll-seo-tag  # ✅ This one is safe
+
 collections:
   choirs:
     output: true
   concerts:
     output: true
+    permalink: /:name/
