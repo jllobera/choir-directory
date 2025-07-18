@@ -15,21 +15,32 @@ layout: default
     {% endif %}
   </p>
   <p><strong>Price:</strong> {{ page.price }}</p>
-  <p><strong>Performers:</strong>
-    {% for performer in page.performers %}
-      {% if performer.slug %}
-        {% assign choir = site.choirs | where: "slug", performer.slug | first %}
-        {% if choir %}
-          <a href="{{ choir.url | relative_url }}">{{ performer.name }}</a>
+  <div style="margin-top: 1em;">
+    <strong>Performers:</strong>
+    <div style="margin-left: 1em; line-height: 1.2;">
+      {% for performer in page.performers %}
+        {% if performer.name %}
+          {% assign name = performer.name %}
+          {% assign slug = performer.slug %}
         {% else %}
-          {{ performer.name }}
+          {% assign name = performer %}
+          {% assign slug = nil %}
         {% endif %}
-      {% else %}
-        {{ performer.name }}
-      {% endif %}
-      {% unless forloop.last %}, {% endunless %}
-    {% endfor %}
-  </p>
+  
+        {% if slug %}
+          {% assign choir = site.choirs | where: "slug", slug | first %}
+          {% if choir %}
+            <div><a href="{{ choir.url | relative_url }}">{{ name }}</a></div>
+          {% else %}
+            <div>{{ name }}</div>
+          {% endif %}
+        {% else %}
+          <div>{{ name }}</div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
 
 
   {% if page.choirs %}
