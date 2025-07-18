@@ -34,7 +34,9 @@ title: Concert Agenda
     </tr>
   </thead>
   <tbody>
-    {% assign sorted_concerts = site.concerts | sort: 'date' %}
+    {% assign concerts = site.pages | where_exp: "page", "page.path contains 'concerts/'" %}
+    {% assign sorted_concerts = concerts | sort: "date" %}
+    
     {% for concert in sorted_concerts %}
       <tr class="concert-row" data-concert="{{ concert.url | relative_url }}">
         <td>{{ concert.date | date: "%Y-%m-%d" }}</td>
