@@ -6,11 +6,11 @@ place: "Concert Hall A, City A"
 title: "Autumn Gala Concert"
 price: "Free admission"
 performers:
-  - "Choir A"
-  - "Choir B"
-choirs:
-  - "choir-a"   # use the choir page filename without extension for linking
-  - "choir-b"
+  - name: "Choir A"
+    slug: "choir-a"
+  - name: "Conductor 1"
+  - name: "Choir B"
+    slug: "choir-b"
 coverimage: "/img/concerts/autumn-gala.jpg"
 description: |
   "The Autumn Gala Concert brings together Choir A and Choir B for an evening of choral masterpieces..."
