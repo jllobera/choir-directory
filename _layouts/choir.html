@@ -32,7 +32,7 @@ layout: default
     <div class="social-links">
       {% if page.website %}
         <a href="{{ page.website }}" target="_blank" title="Website">
-          <img src="/assets/icons/website.svg" alt="Website">
+          <img src="{{ '/assets/icons/website.svg' | relative_url }}" alt="Website">
         </a>
       {% endif %}
       {% if page.facebook %}
