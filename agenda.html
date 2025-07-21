@@ -45,11 +45,11 @@ title: Concert Agenda
         <td>{{ concert.place }}</td>
         <td>{{ concert.price }}</td>
         <td>
-          {% assign valid_performers = concert.performers | where: "slug" %}
+          {% assign valid_performers = concert.performers | where_exp: "p", "p.slug" %}
           {% for performer in valid_performers %}
             {% assign choir = site.choirs | where: "slug", performer.slug | first %}
             {% if choir %}
-              <a href="{{ choir.url | relative_url }}">{{ performer.name }}</a>{% unless forloop.last %}, {% endunless %}
+              <a href="{{ choir.url | relative_url }}">{{ performer.name }}</a>{% unless forloop.last %},{% endunless %}
             {% endif %}
           {% endfor %}
         </td>
