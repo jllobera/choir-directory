@@ -45,8 +45,9 @@ title: Concert Agenda
         <td>{{ concert.place }}</td>
         <td>{{ concert.price }}</td>
         <td>
-          {% for performer in concert.performers %}
-            {{ performer }}{% unless forloop.last %}, {% endunless %}
+          {% assign choir_performers = concert.performers | where: "slug", true %}
+          {% for performer in choir_performers %}
+            {{ performer.name }}{% unless forloop.last %}, {% endunless %}
           {% endfor %}
         </td>
       </tr>
