@@ -37,17 +37,17 @@ layout: default
       {% endif %}
       {% if page.facebook %}
         <a href="{{ page.facebook }}" target="_blank" title="Facebook">
-          <img src="/assets/icons/facebook.svg" alt="Facebook">
+          <img src="{{ '/assets/icons/facebook.svg' | relative_url }}" alt="Facebook">
         </a>
       {% endif %}
       {% if page.instagram %}
         <a href="{{ page.instagram }}" target="_blank" title="Instagram">
-          <img src="/assets/icons/instagram.svg" alt="Instagram">
+          <img src="{{ '/assets/icons/instagram.svg' | relative_url }}" alt="Instagram">
         </a>
       {% endif %}
       {% if page.youtube %}
         <a href="{{ page.youtube }}" target="_blank" title="YouTube">
-          <img src="/assets/icons/youtube.svg" alt="YouTube">
+          <img src="{{ '/assets/icons/youtube.svg' | relative_url }}" alt="YouTube">
         </a>
       {% endif %}
     </div>
