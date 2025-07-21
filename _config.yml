@@ -2,8 +2,6 @@ title: Choir Directory
 description: A directory of choirs in my region
 theme: minima
 
-baseurl: "/choir-directory" # name of your GitHub Pages repository
-
 # GitHub Pages supports a limited set of plugins
 plugins:
   - jekyll-seo-tag  # ✅ This one is safe
