@@ -45,10 +45,17 @@ title: Concert Agenda
         <td>{{ concert.place }}</td>
         <td>{{ concert.price }}</td>
         <td>
-          {% assign choir_performers = concert.performers | where: "slug", true %}
-          {% for performer in choir_performers %}
-            {{ performer.name }}{% unless forloop.last %}, {% endunless %}
+          {% assign choir_links = "" %}
+          {% for performer in concert.performers %}
+            {% if performer.slug %}
+              {% assign link = "<a href='/choirs/" | append: performer.slug | append: "/'>" | append: performer.name | append: "</a>" %}
+              {% assign choir_links = choir_links | append: link %}
+              {% unless forloop.last %}
+                {% assign choir_links = choir_links | append: ", " %}
+              {% endunless %}
+            {% endif %}
           {% endfor %}
+          {{ choir_links | strip_newlines }}
         </td>
       </tr>
     {% endfor %}
