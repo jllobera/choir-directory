@@ -2,49 +2,101 @@
 layout: default
 ---
 
+---
+layout: default
+---
+
 <div class="choir-profile">
-    <h1>{{ page.name }}</h1>
+  <h1>{{ page.name }}</h1>
+
+  {% if page.year %}
     <p><strong>Founded:</strong> {{ page.year }}</p>
+  {% endif %}
+
+  {% if page.location and page.coordinates %}
+    {% assign lat = page.coordinates[0] %}
+    {% assign lng = page.coordinates[1] %}
+    <p>
+      <strong>Location:</strong>
+      <a href="https://www.google.com/maps?q={{ lat }},{{ lng }}" target="_blank">{{ page.location }}</a>
+    </p>
+  {% elsif page.location %}
     <p><strong>Location:</strong> {{ page.location }}</p>
+  {% endif %}
 
-    {% if page.conductors %}
-      <p><strong>Conductors:</strong> {{ page.conductors | join: ", " }}</p>
-    {% endif %}
+  {% if page.conductors %}
+    <p><strong>Conductors:</strong> {{ page.conductors | join: ", " }}</p>
+  {% endif %}
 
+  {% if page.description %}
     <p>{{ page.description }}</p>
+  {% endif %}
 
-    {% if page.website %}
-      <p><a href="{{ page.website }}" target="_blank">Visit Website</a></p>
-    {% endif %}
+  {% if page.website or page.facebook or page.instagram or page.x %}
+    <div class="social-links">
+      {% if page.website %}
+        <a href="{{ page.website }}" target="_blank" title="Website">
+          <img src="/assets/icons/website.svg" alt="Website">
+        </a>
+      {% endif %}
+      {% if page.facebook %}
+        <a href="{{ page.facebook }}" target="_blank" title="Facebook">
+          <img src="/assets/icons/facebook.svg" alt="Facebook">
+        </a>
+      {% endif %}
+      {% if page.instagram %}
+        <a href="{{ page.instagram }}" target="_blank" title="Instagram">
+          <img src="/assets/icons/instagram.svg" alt="Instagram">
+        </a>
+      {% endif %}
+      {% if page.youtube %}
+        <a href="{{ page.youtube }}" target="_blank" title="YouTube">
+          <img src="/assets/icons/youtube.svg" alt="YouTube">
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
 
-    {% if page.photos %}
-      <h2>Gallery</h2>
-      <div class="choir-gallery">
-        {% for photo in page.photos %}
-          <a href="{{ photo | relative_url }}" target="_blank">
-            <img src="{{ photo | relative_url }}" alt="{{ page.name }} photo">
-          </a>
-        {% endfor %}
-      </div>
-    {% endif %}
+  {% if page.photos %}
+    <h2>Gallery</h2>
+    <div class="choir-gallery">
+      {% for photo in page.photos %}
+        <a href="{{ photo | relative_url }}" target="_blank">
+          <img src="{{ photo | relative_url }}" alt="{{ page.name }} photo">
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
 </div>
 
 <style>
-  .choir-profile {
-      max-width: 800px;
-      margin: auto;
-      text-align: center;
-  }
-  .choir-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-  }
-  .choir-gallery img {
-      max-width: 200px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-  }
+.choir-profile {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+.choir-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.choir-gallery img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.social-links {
+  margin: 10px 0;
+}
+.social-links a {
+  margin: 0 10px;
+  display: inline-block;
+}
+.social-links img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
 </style>
